@@ -24,8 +24,23 @@ app.get("/", function(req,res){
     })
     
 })
+// app.get("/work" ,function(req,res){
+//     res.render("list", {
+//         listTitle:"work",
+//         newListItems:items
+//     })
+// })
+
+
+
 app.post("/",function(req, res){
     var item=req.body.newItem
+    if(req.body.hasOwnProperty("goto")){
+        res.render("work", {
+            listTitle:"work",
+            newListItems:items
+        })
+    }
     if(req.body.list==="work"){
         workItems.push(item)
         res.redirect("/work")
